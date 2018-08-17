@@ -1,0 +1,9 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  pigo-face-detector:
+    lang: go
+    handler: ./pigo-face-detector
+    image: pigo-face-detector:latest
