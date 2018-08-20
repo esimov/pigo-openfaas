@@ -22,6 +22,8 @@ import (
 	"github.com/fogleman/gg"
 )
 
+var dc *gg.Context
+
 type FaceDetector struct {
 	cascadeFile  string
 	minSize      int
@@ -35,8 +37,6 @@ type DetectionResult struct {
 	Faces       []image.Rectangle
 	ImageBase64 string
 }
-
-var dc *gg.Context
 
 // Handle a serverless request
 func Handle(req []byte) string {
@@ -144,6 +144,9 @@ func (fd *FaceDetector) DetectFaces(source string) ([]pigo.Detection, error) {
 	pixels := pigo.RgbToGrayscale(src)
 	cols, rows := src.Bounds().Max.X, src.Bounds().Max.Y
 
+	dc = gg.NewContext(cols, rows)
+	dc.DrawImage(src, 0, 0)
+
 	cParams := pigo.CascadeParams{
 		MinSize:     fd.minSize,
 		MaxSize:     fd.maxSize,
@@ -181,8 +184,10 @@ func (fd *FaceDetector) DetectFaces(source string) ([]pigo.Detection, error) {
 }
 
 func (fd *FaceDetector) DrawFaces(faces []pigo.Detection, isCircle bool) ([]image.Rectangle, []byte, error) {
-	var qThresh float32 = 5.0
-	var rects []image.Rectangle
+	var (
+		qThresh float32 = 5.0
+		rects   []image.Rectangle
+	)
 
 	for _, face := range faces {
 		if face.Q > qThresh {
