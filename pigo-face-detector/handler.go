@@ -40,20 +40,25 @@ type DetectionResult struct {
 
 // Handle a serverless request
 func Handle(req []byte) string {
-	var data []byte
+	var (
+		resp  DetectionResult
+		rects []image.Rectangle
+		data  []byte
+		image []byte
+	)
 
 	if val, exists := os.LookupEnv("input_mode"); exists && val == "url" {
-		inputUrl := strings.TrimSpace(string(req))
+		inputURL := strings.TrimSpace(string(req))
 
-		res, err := http.Get(inputUrl)
+		res, err := http.Get(inputURL)
 		if err != nil {
-			return fmt.Sprintf("Unable to download image file from URI: %s, status %d", inputUrl, res.Status)
+			return fmt.Sprintf("Unable to download image file from URI: %s, status %v", inputURL, res.Status)
 		}
 		defer res.Body.Close()
 
 		data, err = ioutil.ReadAll(res.Body)
 		if err != nil {
-			return fmt.Sprintf("Unable to read response body", err)
+			return fmt.Sprintf("Unable to read response body: %s", err)
 		}
 	} else {
 		var decodeError error
@@ -88,16 +93,12 @@ func Handle(req []byte) string {
 		output = val
 	}
 
-	fd := NewFaceDetector("./data/facefinder", 20, 2000, 0.1, 1.1, 0.2)
+	fd := NewFaceDetector("./data/facefinder", 20, 2000, 0.1, 1.1, 0.18)
 	faces, err := fd.DetectFaces(tmpfile.Name())
 
 	if err != nil {
 		return fmt.Sprintf("Error on face detection:, %v", err)
 	}
-
-	var resp DetectionResult
-	var rects []image.Rectangle
-	var image []byte
 
 	if output == "image" || output == "json_image" {
 		var err error
@@ -213,7 +214,7 @@ func (fd *FaceDetector) DrawFaces(faces []pigo.Detection, isCircle bool) ([]imag
 				face.Scale,
 				face.Scale,
 			))
-			dc.SetLineWidth(3.0)
+			dc.SetLineWidth(2.0)
 			dc.SetStrokeStyle(gg.NewSolidPattern(color.RGBA{R: 255, G: 0, B: 0, A: 255}))
 			dc.Stroke()
 		}
