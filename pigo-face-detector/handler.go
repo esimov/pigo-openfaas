@@ -24,6 +24,7 @@ import (
 
 var dc *gg.Context
 
+// FaceDetector struct contains Pigo face detector general settings.
 type FaceDetector struct {
 	cascadeFile  string
 	minSize      int
@@ -33,6 +34,7 @@ type FaceDetector struct {
 	iouThreshold float64
 }
 
+// DetectionResult contains the coordinates of the detected faces and the base64 converted image.
 type DetectionResult struct {
 	Faces       []image.Rectangle
 	ImageBase64 string
@@ -74,7 +76,7 @@ func Handle(req []byte) string {
 	}
 	tmpfile, err := ioutil.TempFile("/tmp", "image")
 	if err != nil {
-		log.Fatal("Unable to create temporary file: %v", err)
+		log.Fatalf("Unable to create temporary file: %v", err)
 	}
 	defer os.Remove(tmpfile.Name())
 
@@ -125,6 +127,7 @@ func Handle(req []byte) string {
 	return string(j)
 }
 
+// NewFaceDetector initialises the constructor function.
 func NewFaceDetector(cf string, minSize, maxSize int, shf, scf, iou float64) *FaceDetector {
 	return &FaceDetector{
 		cascadeFile:  cf,
@@ -136,6 +139,7 @@ func NewFaceDetector(cf string, minSize, maxSize int, shf, scf, iou float64) *Fa
 	}
 }
 
+// DetectFaces run the detection algorithm over the provided source image.
 func (fd *FaceDetector) DetectFaces(source string) ([]pigo.Detection, error) {
 	src, err := pigo.GetImage(source)
 	if err != nil {
@@ -184,6 +188,7 @@ func (fd *FaceDetector) DetectFaces(source string) ([]pigo.Detection, error) {
 	return faces, nil
 }
 
+// DrawFaces marks the detected faces with a circle in case isCircle is true, otherwise marks with a rectangle.
 func (fd *FaceDetector) DrawFaces(faces []pigo.Detection, isCircle bool) ([]image.Rectangle, []byte, error) {
 	var (
 		qThresh float32 = 5.0
