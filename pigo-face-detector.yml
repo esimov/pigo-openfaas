@@ -7,3 +7,6 @@ functions:
     lang: go
     handler: ./pigo-face-detector
     image: pigo-face-detector:latest
+    environment:
+      input_mode: "url"
+      output_mode: "image"
