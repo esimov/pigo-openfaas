@@ -30,7 +30,7 @@ Once the deployment was successfull `pigo-face-detector` will show up in the fun
 <img src="https://user-images.githubusercontent.com/883386/44348484-388a1c80-a4a3-11e8-8d1d-bc529be52ff3.jpg" title="OpenFaaS Pigo Face Detection"/>
 </p>
 
-Source image: https://raw.githubusercontent.com/esimov/pigo-openfaas/master/openfaas-pigo/samples/monarchy.jpg
+Source image: http://www.balkaninsight.com/uploads/1/images/2016-06-25/e2066a86e25a978d5ab9f7a00b8db076.jpg
 
 The detection time is always around **~0.4s** for the sample image.
 
