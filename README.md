@@ -1,4 +1,4 @@
-# pigo-openfaas
+# openfaas-pigo
 OpenFaaS function for Pigo face detector.
 
 ### Usage
