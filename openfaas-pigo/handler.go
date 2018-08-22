@@ -121,7 +121,7 @@ func Handle(req []byte) string {
 	faces, err := fd.DetectFaces(tmpfile.Name())
 
 	if err != nil {
-		return fmt.Sprintf("Error on face detection:, %v", err)
+		return fmt.Sprintf("Error on face detection: %v", err)
 	}
 
 	if output == "image" || output == "json_image" {
@@ -242,7 +242,7 @@ func (fd *FaceDetector) DrawFaces(faces []pigo.Detection, isCircle bool) ([]imag
 				face.Scale,
 			))
 			dc.SetLineWidth(2.0)
-			dc.SetStrokeStyle(gg.NewSolidPattern(color.RGBA{R: 255, G: 0, B: 0, A: 255}))
+			dc.SetStrokeStyle(gg.NewSolidPattern(color.RGBA{R: 255, G: 255, B: 0, A: 255}))
 			dc.Stroke()
 		}
 	}
