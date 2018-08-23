@@ -5,8 +5,8 @@ provider:
 functions:
   pigo-face-detector:
     lang: go
-    handler: ./openfaas-pigo
-    image: esimov/openfaas-pigo:latest
+    handler: ./pigo-openfaas
+    image: esimov/pigo-openfaas:0.1
     environment:
       input_mode: "url"
       output_mode: "image"

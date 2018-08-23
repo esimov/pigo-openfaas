@@ -1,4 +1,4 @@
-# openfaas-pigo
+# pigo-openfaas
 OpenFaaS function for Pigo face detector.
 
 ### Usage
@@ -6,7 +6,7 @@ To run the function locally you have to make sure OpenFaaS is up and running. Fo
 
 Clone the repository:
 ```bash
-$ git clone https://github.com/esimov/pigo-openfaas
+$ git clone https://github.com/esimov/openfaas-pigo
 ```
 
 #### Build
