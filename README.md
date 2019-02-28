@@ -2,7 +2,7 @@
 OpenFaaS function for Pigo face detector.
 
 ### Usage
-To run the function locally you have to make sure OpenFaaS is up and running. Follow the official documentation for help. https://docs.openfaas.com/
+To run the function locally you have to make sure OpenFaaS is up and running. Read the official documentation for more help. https://docs.openfaas.com/
 
 Clone the repository:
 ```bash
@@ -31,8 +31,6 @@ After deploying the OpenFaaS function `pigo-face-detector` will show up in the f
 </p>
 
 Sample image: https://user-images.githubusercontent.com/883386/53553708-ebb88a00-3b46-11e9-9ea8-73c6b7f9dfa1.jpg
-
-The detection time is always around **~0.4s** for the sample image.
 
 ## License
 
