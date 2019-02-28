@@ -4,8 +4,8 @@
 [[projects]]
   name = "github.com/esimov/pigo"
   packages = ["core"]
-  revision = "6dbb9e779c598e4d166536c5f5d7a85c8f0e0955"
-  version = "v1.0.2"
+  revision = "b8c07b835cabb54f6d1b101cc2fddd8cc2338fe7"
+  version = "v1.1.0"
 
 [[projects]]
   name = "github.com/fogleman/gg"
@@ -38,6 +38,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "7ce218806176d7fc463ab23beaeb587ac22f83c94281918e4ef4f30a6dd743e6"
+  inputs-digest = "18738cdf64faa5fad780714556b927ed8b6a3e8c68669b0b0b136490bd77bd0a"
   solver-name = "gps-cdcl"
   solver-version = 1
