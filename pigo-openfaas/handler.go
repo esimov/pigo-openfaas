@@ -179,12 +179,12 @@ func (fd *FaceDetector) DetectFaces(source string) ([]pigo.Detection, error) {
 		MaxSize:     fd.maxSize,
 		ShiftFactor: fd.shiftFactor,
 		ScaleFactor: fd.scaleFactor,
-	}
-	imgParams := pigo.ImageParams{
-		Pixels: pixels,
-		Rows:   rows,
-		Cols:   cols,
-		Dim:    cols,
+		ImageParams: pigo.ImageParams{
+			Pixels: pixels,
+			Rows:   rows,
+			Cols:   cols,
+			Dim:    cols,
+		},
 	}
 
 	cascadeFile, err := ioutil.ReadFile(fd.cascadeFile)
@@ -202,7 +202,7 @@ func (fd *FaceDetector) DetectFaces(source string) ([]pigo.Detection, error) {
 
 	// Run the classifier over the obtained leaf nodes and return the detection results.
 	// The result contains quadruplets representing the row, column, scale and detection score.
-	faces := classifier.RunCascade(imgParams, cParams)
+	faces := classifier.RunCascade(cParams, 0)
 
 	// Calculate the intersection over union (IoU) of two clusters.
 	faces = classifier.ClusterDetections(faces, fd.iouThreshold)
