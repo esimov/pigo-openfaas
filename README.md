@@ -34,4 +34,6 @@ Sample image: https://user-images.githubusercontent.com/883386/53553708-ebb88a00
 
 ## License
 
+Copyright © 2018 Endre Simo
+
 This project is under the MIT License. See the LICENSE file for the full license text.
