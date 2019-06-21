@@ -30,8 +30,6 @@ After deploying the OpenFaaS function `pigo-face-detector` will show up in the f
 <img src="https://user-images.githubusercontent.com/883386/53553799-202c4600-3b47-11e9-91d5-ff8f296fbeb3.jpg" title="OpenFaaS Pigo Face Detection"/>
 </p>
 
-Sample image: https://user-images.githubusercontent.com/883386/53553708-ebb88a00-3b46-11e9-9ea8-73c6b7f9dfa1.jpg
-
 ## License
 
 Copyright © 2018 Endre Simo
