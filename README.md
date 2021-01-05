@@ -1,5 +1,5 @@
 # pigo-openfaas
-OpenFaaS function for Pigo face detector.
+OpenFaaS function for face detection using the [Pigo](https://github.com/esimov/pigo) library.
 
 ### Usage
 To run the function locally you have to make sure OpenFaaS is up and running. Read the official documentation for more help. https://docs.openfaas.com/
