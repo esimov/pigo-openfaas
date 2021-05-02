@@ -40,7 +40,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/esimov/pigo/core"
+	pigo "github.com/esimov/pigo/core"
 	"github.com/fogleman/gg"
 )
 
@@ -104,7 +104,7 @@ func Handle(req []byte) string {
 
 	_, err = io.Copy(tmpfile, bytes.NewBuffer(data))
 	if err != nil {
-		return fmt.Sprintf("Unable to copy the source URI to the destionation file")
+		return fmt.Sprintf("Unable to copy the source URI to the destination file")
 	}
 
 	var output string
